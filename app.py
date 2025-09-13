@@ -6,7 +6,7 @@ import matplotlib.patheffects as path_effects
 import pandas as pd
 
 #파일 불러오기
-df_result = pd.read_excel(r"C:\Users\윤서현\Desktop\8페이지\09118페이지1번Z점수화필터링후.xlsx")
+df_result = pd.read_excel("09118페이지1번Z점수화필터링후.xlsx")
 
 # -----------------------------
 # 한글 폰트 설정
