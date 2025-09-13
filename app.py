@@ -17,6 +17,7 @@ df_result = pd.read_excel("09118페이지1번Z점수화필터링후.xlsx")
 # plt.rcParams['axes.unicode_minus'] = False
 
 plt.rc('font', family='NanumGothic')
+plt.rcParams['axes.unicode_minus'] = False
 
 # -----------------------------
 # Streamlit UI
