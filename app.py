@@ -17,8 +17,14 @@ df_result = pd.read_excel("09118페이지1번Z점수화필터링후.xlsx")
 # plt.rc('font', family=font_name)
 # plt.rcParams['axes.unicode_minus'] = False
 
-plt.rc('font', family='NanumGothic')
-plt.rcParams['axes.unicode_minus'] = False
+# plt.rc('font', family='NanumGothic')
+# plt.rcParams['axes.unicode_minus'] = False
+
+import os
+font_path = os.path.join(os.path.dirname(__file__), "fonts", "KoPubWorld Dotum_Pro Medium.otf")
+font_name = fm.FontProperties(fname=font_path).get_name()
+plt.rc('font', family=font_name)
+
 
 # -----------------------------
 # Streamlit UI
