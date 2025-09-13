@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.font_manager as fm
 import matplotlib.patheffects as path_effects
 import pandas as pd
+from matplotlib import rc
 
 #파일 불러오기
 df_result = pd.read_excel("09118페이지1번Z점수화필터링후.xlsx")
