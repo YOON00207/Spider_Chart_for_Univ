@@ -17,7 +17,7 @@ df_result = pd.read_excel("09118페이지1번Z점수화필터링후.xlsx")
 # plt.rc('font', family=font_name)
 # plt.rcParams['axes.unicode_minus'] = False
 
-plt.rc('font', family='Malgun Gothic')
+plt.rc('font', family='NanumGothic')
 plt.rcParams['axes.unicode_minus'] = False
 
 # -----------------------------
