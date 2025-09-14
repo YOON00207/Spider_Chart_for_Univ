@@ -148,8 +148,8 @@ if school_name in df_result["학교"].values:
     fontsize = 12,
     markerscale = 2.0,
     title=None,     # 범례 제목 제거
-    frameon=False,
-    fontproperties=font_prop  # (선택) 범례 박스 테두리 제거
+    frameon=False, # (선택) 범례 박스 테두리 제거
+    prop=font_prop, 
 )
 
     # -----------------------------
