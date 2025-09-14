@@ -5,6 +5,7 @@ import matplotlib.font_manager as fm
 import matplotlib.patheffects as path_effects
 import pandas as pd
 from matplotlib import rc
+import os
 
 #파일 불러오기
 df_result = pd.read_excel("09118페이지1번Z점수화필터링후.xlsx")
@@ -12,36 +13,7 @@ df_result = pd.read_excel("09118페이지1번Z점수화필터링후.xlsx")
 # -----------------------------
 # 한글 폰트 설정
 # -----------------------------
-# font_path = "KoPubWorld Dotum_Pro Medium.otf"
-# font_name = fm.FontProperties(fname=font_path).get_name()
-# plt.rc('font', family=font_name)
-# plt.rcParams['axes.unicode_minus'] = False
-
-# plt.rc('font', family='NanumGothic')
-# plt.rcParams['axes.unicode_minus'] = False
-
-import os
-# font_path = os.path.join(os.path.dirname(__file__), "fonts", "KoPubWorld Dotum_Pro Medium.otf")
-# font_name = fm.FontProperties(fname=font_path).get_name()
-# # plt.rc('font', family=font_name)
-# font_path = os.path.join(os.path.dirname(__file__), "KoPubWorld Dotum_Pro Medium.otf")
-
-# # 경로가 맞는지 로그 확인 (Streamlit Cloud에서 True 나와야 함)
-# print("폰트 경로:", font_path, os.path.exists(font_path))
-
-# # matplotlib 폰트 등록
-# font_name = fm.FontProperties(fname=font_path).get_name()
-# plt.rc('font', family=font_name)
-# plt.rcParams['axes.unicode_minus'] = False
-
-# print("폰트 이름:", font_name)
-
-# font_path = os.path.join(os.path.dirname(__file__), "KoPubWorld Dotum_Pro Medium.otf")
-# font_name = fm.FontProperties(fname=font_path).get_name()
-
-# print("폰트 이름:", font_name)
-
-# # 폰트 경로
+# 폰트 경로
 font_path = os.path.join(os.path.dirname(__file__), "KoPubWorld Dotum Bold.ttf")
 font_prop = fm.FontProperties(fname=font_path)
 
@@ -117,7 +89,7 @@ if school_name in df_result["학교"].values:
             ax.plot(angle_vals, values, label=lab, color=colors[lab], linewidth=3.5)
 
     ax.set_xticks(angles)
-    ax.set_xticklabels(labels, fontsize=13, weight="bold", fontproperties=font_prop)
+    ax.set_xticklabels(labels, fontsize=16, weight="bold", fontproperties=font_prop)
     
     ax.set_theta_offset(np.pi / 2)  # 90도 회전
     ax.set_theta_direction(-1) #반시계
