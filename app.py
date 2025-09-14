@@ -117,7 +117,7 @@ if school_name in df_result["학교"].values:
             ax.plot(angle_vals, values, label=lab, color=colors[lab], linewidth=3.5)
 
     ax.set_xticks(angles)
-    ax.set_xticklabels(labels, fontsize=13, weight="bold")
+    ax.set_xticklabels(labels, fontsize=13, weight="bold", fontproperties=font_prop)
     
     ax.set_theta_offset(np.pi / 2)  # 90도 회전
     ax.set_theta_direction(-1) #반시계
