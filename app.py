@@ -21,19 +21,35 @@ df_result = pd.read_excel("09118페이지1번Z점수화필터링후.xlsx")
 # plt.rcParams['axes.unicode_minus'] = False
 
 import os
-# font_path = os.path.join(os.path.dirname(__file__), "fonts", "KoPubWorld Dotum_Pro Medium.otf")
+# # font_path = os.path.join(os.path.dirname(__file__), "fonts", "KoPubWorld Dotum_Pro Medium.otf")
+# # font_name = fm.FontProperties(fname=font_path).get_name()
+# # plt.rc('font', family=font_name)
+# font_path = os.path.join(os.path.dirname(__file__), "KoPubWorld Dotum_Pro Medium.otf")
+
+# # 경로가 맞는지 로그 확인 (Streamlit Cloud에서 True 나와야 함)
+# print("폰트 경로:", font_path, os.path.exists(font_path))
+
+# # matplotlib 폰트 등록
 # font_name = fm.FontProperties(fname=font_path).get_name()
 # plt.rc('font', family=font_name)
-font_path = os.path.join(os.path.dirname(__file__), "KoPubWorld Dotum_Pro Medium.otf")
+# plt.rcParams['axes.unicode_minus'] = False
 
-# 경로가 맞는지 로그 확인 (Streamlit Cloud에서 True 나와야 함)
-print("폰트 경로:", font_path, os.path.exists(font_path))
+# print("폰트 이름:", font_name)
 
-# matplotlib 폰트 등록
-font_name = fm.FontProperties(fname=font_path).get_name()
-plt.rc('font', family=font_name)
+# font_path = os.path.join(os.path.dirname(__file__), "KoPubWorld Dotum_Pro Medium.otf")
+# font_name = fm.FontProperties(fname=font_path).get_name()
+
+# print("폰트 이름:", font_name)
+
+# 폰트 경로
+font_path = os.path.join(os.path.dirname(__file__), "KoPubWorld Dotum Medium.ttf")
+font_prop = fm.FontProperties(fname=font_path)
+
+# matplotlib 전역에 적용
+plt.rcParams['font.family'] = font_prop.get_name()
 plt.rcParams['axes.unicode_minus'] = False
 
+print("적용된 폰트:", plt.rcParams['font.family'])
 # -----------------------------
 # Streamlit UI
 # -----------------------------
