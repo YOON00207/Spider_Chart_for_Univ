@@ -17,14 +17,22 @@ df_result = pd.read_excel("09118페이지1번Z점수화필터링후.xlsx")
 # plt.rc('font', family=font_name)
 # plt.rcParams['axes.unicode_minus'] = False
 
-plt.rc('font', family='NanumGothic')
-plt.rcParams['axes.unicode_minus'] = False
+# plt.rc('font', family='NanumGothic')
+# plt.rcParams['axes.unicode_minus'] = False
 
-# import os
+import os
 # font_path = os.path.join(os.path.dirname(__file__), "fonts", "KoPubWorld Dotum_Pro Medium.otf")
 # font_name = fm.FontProperties(fname=font_path).get_name()
 # plt.rc('font', family=font_name)
+font_path = os.path.join(os.path.dirname(__file__), "KoPubWorld Dotum_Pro Medium.otf")
 
+# 경로가 맞는지 로그 확인 (Streamlit Cloud에서 True 나와야 함)
+print("폰트 경로:", font_path, os.path.exists(font_path))
+
+# matplotlib 폰트 등록
+font_name = fm.FontProperties(fname=font_path).get_name()
+plt.rc('font', family=font_name)
+plt.rcParams['axes.unicode_minus'] = False
 
 # -----------------------------
 # Streamlit UI
