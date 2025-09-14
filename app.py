@@ -69,7 +69,7 @@ if school_name in df_result["학교"].values:
     # -----------------------------
     # 레이더 차트 그리기
     # -----------------------------
-    fig, ax = plt.subplots(figsize=(11, 11), subplot_kw=dict(polar=True))
+    fig, ax = plt.subplots(figsize=(9, 9), subplot_kw=dict(polar=True))
 
     colors = {
     school_name : "#B22222",        # 빨강
