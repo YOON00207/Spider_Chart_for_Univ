@@ -21,8 +21,8 @@ df_result = pd.read_excel("09118페이지1번Z점수화필터링후.xlsx")
 # plt.rcParams['axes.unicode_minus'] = False
 
 import os
-font_path = os.path.join(os.path.dirname(__file__), "fonts", "KoPubWorld Dotum_Pro Medium.otf")
-font_name = fm.FontProperties(fname=font_path).get_name()
+# font_path = os.path.join(os.path.dirname(__file__), "fonts", "KoPubWorld Dotum_Pro Medium.otf")
+# font_name = fm.FontProperties(fname=font_path).get_name()
 # # plt.rc('font', family=font_name)
 # font_path = os.path.join(os.path.dirname(__file__), "KoPubWorld Dotum_Pro Medium.otf")
 
@@ -42,11 +42,11 @@ font_name = fm.FontProperties(fname=font_path).get_name()
 # print("폰트 이름:", font_name)
 
 # # 폰트 경로
-# font_path = os.path.join(os.path.dirname(__file__), "KoPubWorld Dotum Medium.ttf")
-# font_prop = fm.FontProperties(fname=font_path)
+font_path = os.path.join(os.path.dirname(__file__), "KoPubWorld Dotum Bold.ttf")
+font_prop = fm.FontProperties(fname=font_path)
 
 # matplotlib 전역에 적용
-plt.rcParams['font.family'] = font_name.get_name()
+plt.rcParams['font.family'] = font_prop.get_name()
 plt.rcParams['axes.unicode_minus'] = False
 
 print("적용된 폰트:", plt.rcParams['font.family'])
@@ -117,7 +117,7 @@ if school_name in df_result["학교"].values:
             ax.plot(angle_vals, values, label=lab, color=colors[lab], linewidth=3.5)
 
     ax.set_xticks(angles)
-    ax.set_xticklabels(labels, fontsize=13, weight="bold", fontproperties=font_name)
+    ax.set_xticklabels(labels, fontsize=13, weight="bold", fontproperties=font_prop)
     
     ax.set_theta_offset(np.pi / 2)  # 90도 회전
     ax.set_theta_direction(-1) #반시계
@@ -149,7 +149,7 @@ if school_name in df_result["학교"].values:
     markerscale = 2.0,
     title=None,     # 범례 제목 제거
     frameon=False,
-    fontproperties=font_name  # (선택) 범례 박스 테두리 제거
+    fontproperties=font_prop  # (선택) 범례 박스 테두리 제거
 )
 
     # -----------------------------
