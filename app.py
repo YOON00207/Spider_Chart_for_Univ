@@ -69,7 +69,7 @@ if school_name in df_result["학교"].values:
     # -----------------------------
     # 레이더 차트 그리기
     # -----------------------------
-    fig, ax = plt.subplots(figsize=(9, 9), subplot_kw=dict(polar=True))
+    fig, ax = plt.subplots(figsize=(11, 11), subplot_kw=dict(polar=True))
 
     colors = {
     school_name : "#B22222",        # 빨강
@@ -89,7 +89,7 @@ if school_name in df_result["학교"].values:
             ax.plot(angle_vals, values, label=lab, color=colors[lab], linewidth=3.5)
 
     ax.set_xticks(angles)
-    ax.set_xticklabels(labels, fontsize=16, weight="bold", fontproperties=font_prop)
+    ax.set_xticklabels(labels, fontsize=20, weight="bold", fontproperties=font_prop)
     
     ax.set_theta_offset(np.pi / 2)  # 90도 회전
     ax.set_theta_direction(-1) #반시계
