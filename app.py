@@ -17,6 +17,7 @@ df_result = pd.read_excel("09118페이지1번Z점수화필터링후.xlsx")
 font_path = os.path.join(os.path.dirname(__file__), "KoPubWorld Dotum Bold.ttf")
 font_prop = fm.FontProperties(fname=font_path)
 
+
 # matplotlib 전역에 적용
 plt.rcParams['font.family'] = font_prop.get_name()
 plt.rcParams['axes.unicode_minus'] = False
@@ -35,6 +36,10 @@ fig_size = st.number_input("그래프 크기 (inch)", min_value=5, max_value=20,
 label_fontsize = st.number_input("축 라벨 폰트 크기", min_value=8, max_value=30, value=13, step=1)
 legend_fontsize = st.number_input("범례 폰트 크기", min_value=8, max_value=30, value=12, step=1)
 xlabel_fontsize = st.number_input("숫자 폰트 크기", min_value=8, max_value=30, value=15, step=1)
+
+# --- 라벨용 FontProperties (사이즈 포함) ---
+font_prop_labels = fm.FontProperties(fname=font_path, size=label_fontsize)
+
 
 if school_name in df_result["학교"].values:
     row = df_result[df_result["학교"] == school_name].iloc[0]
@@ -97,7 +102,7 @@ if school_name in df_result["학교"].values:
             ax.plot(angle_vals, values, label=lab, color=colors[lab], linewidth=3.5)
 
     ax.set_xticks(angles)
-    ax.set_xticklabels(labels, fontsize=label_fontsize, weight="bold", fontproperties=font_prop)
+    ax.set_xticklabels(labels, weight="bold", fontproperties=font_prop_labels)
     
     ax.set_theta_offset(np.pi / 2)  # 90도 회전
     ax.set_theta_direction(-1) #반시계
