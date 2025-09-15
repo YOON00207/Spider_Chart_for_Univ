@@ -32,13 +32,14 @@ school_name = st.text_input("대학명을 입력하세요", "국립강릉원주�
 # -----------------------------
 # 사용자 입력값 (Streamlit)
 # -----------------------------
-fig_size = st.number_input("그래프 크기 (inch)", min_value=5, max_value=20, value=9, step=1)
+fig_size = st.number_input("그래프 크기", min_value=5, max_value=20, value=9, step=1)
 label_fontsize = st.number_input("축 라벨 폰트 크기", min_value=8, max_value=30, value=13, step=1)
 legend_fontsize = st.number_input("범례 폰트 크기", min_value=8, max_value=30, value=12, step=1)
 xlabel_fontsize = st.number_input("숫자 폰트 크기", min_value=8, max_value=30, value=15, step=1)
 
 # --- 라벨용 FontProperties (사이즈 포함) ---
-font_prop_labels = fm.FontProperties(fname=font_path, size=label_fontsize)
+font_prop_labels_for_label = fm.FontProperties(fname=font_path, size=label_fontsize)
+font_prop_labels_for_legend = fm.FontProperties(fname=font_path, size=legend_fontsize)
 
 
 if school_name in df_result["학교"].values:
@@ -102,7 +103,7 @@ if school_name in df_result["학교"].values:
             ax.plot(angle_vals, values, label=lab, color=colors[lab], linewidth=3.5)
 
     ax.set_xticks(angles)
-    ax.set_xticklabels(labels, weight="bold", fontproperties=font_prop_labels)
+    ax.set_xticklabels(labels, weight="bold", fontproperties=font_prop_labels_for_label)
     
     ax.set_theta_offset(np.pi / 2)  # 90도 회전
     ax.set_theta_direction(-1) #반시계
@@ -130,11 +131,10 @@ if school_name in df_result["학교"].values:
     loc="upper center", 
     bbox_to_anchor=(0.5, 1.15),
     ncols = 5,
-    fontsize = legend_fontsize,
     markerscale = 2.0,
     title=None,     # 범례 제목 제거
     frameon=False, # (선택) 범례 박스 테두리 제거
-    prop=font_prop, 
+    prop=font_prop_labels_for_legend, 
 )
 
     # -----------------------------
