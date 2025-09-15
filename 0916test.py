@@ -22,6 +22,14 @@ plt.rcParams['axes.unicode_minus'] = False
 st.title("9-1 대학운영측면")
 school_name = st.text_input("대학명을 입력하세요", "국립강릉원주대학교")
 
+# -----------------------------
+# 사용자 입력값 (Streamlit)
+# -----------------------------
+fig_size = st.number_input("그래프 크기 (inch)", min_value=5, max_value=20, value=9, step=1)
+label_fontsize = st.number_input("축 라벨 폰트 크기", min_value=8, max_value=30, value=13, step=1)
+legend_fontsize = st.number_input("범례 폰트 크기", min_value=8, max_value=30, value=12, step=1)
+xlabel_fontsize = st.number_input("숫자 폰트 크기", min_value=8, max_value=30, value=15, step=1)
+
 if school_name in df_result["학교"].values:
     row = df_result[df_result["학교"] == school_name].iloc[0]
     school_region = row["지역"]
@@ -63,7 +71,7 @@ if school_name in df_result["학교"].values:
     # -----------------------------
     # 레이더 차트 그리기
     # -----------------------------
-    fig, ax = plt.subplots(figsize=(15, 15), subplot_kw=dict(polar=True))
+    fig, ax = plt.subplots(figsize= (fig_size, fig_size), subplot_kw=dict(polar=True))
 
     colors = {
     school_name : "#B22222",        # 빨강
@@ -83,7 +91,7 @@ if school_name in df_result["학교"].values:
             ax.plot(angle_vals, values, label=lab, color=colors[lab], linewidth=3.5)
 
     ax.set_xticks(angles)
-    ax.set_xticklabels(labels, fontsize=17, weight="bold")
+    ax.set_xticklabels(labels, fontsize= label_fontsize, weight="bold")
     
     ax.set_theta_offset(np.pi / 2)  # 90도 회전
     ax.set_theta_direction(-1) #반시계
@@ -103,7 +111,7 @@ if school_name in df_result["학교"].values:
     for angle, score in zip(angles, school_scores):
         txt = ax.text(angle, score + 0.25, f"{score:.2f}",
                   ha="center", va="center",
-                  fontsize=15, color="#B22222", weight="bold")
+                  fontsize= xlabel_fontsize, color="#B22222", weight="bold")
         txt.set_path_effects([path_effects.Stroke(linewidth=2, foreground="white"),
                           path_effects.Normal()])
     # 범례
@@ -111,7 +119,7 @@ if school_name in df_result["학교"].values:
     loc="upper center", 
     bbox_to_anchor=(0.5, 1.15),
     ncols = 5,
-    fontsize = 12,
+    fontsize = legend_fontsize,
     markerscale = 2.0,
     title=None,     # 범례 제목 제거
     frameon=False   # (선택) 범례 박스 테두리 제거
