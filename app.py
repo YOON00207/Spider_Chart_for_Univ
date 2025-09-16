@@ -8,7 +8,7 @@ from matplotlib import rc
 import os
 
 #파일 불러오기
-df_result = pd.read_excel("09118페이지1번Z점수화필터링후.xlsx")
+df_result = pd.read_excel("0916대학운영측면데이터Z점수화.xlsx")
 
 # -----------------------------
 # 한글 폰트 설정
