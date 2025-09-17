@@ -8,7 +8,7 @@ from matplotlib import rc
 import os
 
 #파일 불러오기
-df_result = pd.read_excel("0916대학운영측면데이터Z점수화.xlsx")
+df_result = pd.read_excel("0917대학운영측면데이터Z점수화_연구실적데이터수정.xlsx")
 
 # -----------------------------
 # 한글 폰트 설정
@@ -51,7 +51,7 @@ if school_name in df_result["학교"].values:
     custom_order = ["신입생 충원율", "신입생 경쟁률", "외국인 학생수",  "재학생 충원율",
                     "중도탈락률", "전임교원강의비율", "전임교원확보율", "장학금",
                     "1인당 교육비", "등록금", "교원연구(국내)",
-                    "교원연구(SCI)", "교원연구(저역서)", "취업률"]
+                    "교원연구(국제)", "취업률"]
 
     labels = custom_order
     num_vars = len(labels)
