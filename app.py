@@ -162,7 +162,7 @@ if school_name in df_result["학교"].values:
 
      # 문구 생성
     caption = (
-        f"전국 {num_total}개 대학 / "
+        f"**전국 {num_total}개 대학 / "
         f"{school_region} {num_region}개 대학 / "
         f"표준집단 (평균=5)"
     )
@@ -180,7 +180,7 @@ if school_name in df_result["학교"].values:
         clip_on=False
 
     )
-    
+
     st.pyplot(fig)
 
 else:
