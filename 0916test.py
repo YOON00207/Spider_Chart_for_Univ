@@ -30,6 +30,10 @@ label_fontsize = st.number_input("축 라벨 폰트 크기", min_value=8, max_va
 legend_fontsize = st.number_input("범례 폰트 크기", min_value=8, max_value=30, value=12, step=1)
 xlabel_fontsize = st.number_input("숫자 폰트 크기", min_value=8, max_value=30, value=15, step=1)
 
+font_prop_labels_for_label = fm.FontProperties(fname=font_path, size=label_fontsize, weight = 'bold')
+font_prop_labels_for_legend = fm.FontProperties(fname=font_path, size=legend_fontsize, weight = 'bold')
+
+
 if school_name in df_result["학교"].values:
     row = df_result[df_result["학교"] == school_name].iloc[0]
     school_region = row["지역"]
@@ -37,9 +41,9 @@ if school_name in df_result["학교"].values:
 
     # 지표 순서
     custom_order = ["신입생 충원율", "신입생 경쟁률", "외국인 학생수",  "재학생 충원율",
-                    "중도탈락률", "전임교원강의비율", "전임교원확보율", "장학금", "취업률", 
+                    "중도탈락률", "전임교원강의비율", "전임교원확보율", "장학금",
                     "1인당 교육비", "등록금", "교원연구(국내)",
-                    "교원연구(SCI)", "교원연구(저역서)"]
+                    "교원연구(SCI)", "교원연구(저역서)","취업률"]
 
     labels = custom_order
     num_vars = len(labels)
@@ -90,8 +94,22 @@ if school_name in df_result["학교"].values:
         else:  # 나머지는 선만
             ax.plot(angle_vals, values, label=lab, color=colors[lab], linewidth=3.5)
 
-    ax.set_xticks(angles)
-    ax.set_xticklabels(labels, fontsize= label_fontsize, weight="bold")
+        # 기존 라벨 제거
+    ax.set_xticks([])
+    
+
+    # 라벨을 원 밖으로 표시
+    for angle, label in zip(angles, labels):
+        ax.text(
+            angle,            # 각도
+            6.8,              # 반지름 (y축 최댓값보다 조금 더 크게)
+            label,
+            ha="center",
+            va="center",
+            fontproperties=font_prop_labels_for_label,
+            weight="bold"
+        )
+
     
     ax.set_theta_offset(np.pi / 2)  # 90도 회전
     ax.set_theta_direction(-1) #반시계
@@ -128,7 +146,48 @@ if school_name in df_result["학교"].values:
     # -----------------------------
     # Streamlit에 출력
     # -----------------------------
+    # st.pyplot(fig)
+    # 전국 전체 대학 수
+    num_total = df_result["학교"].nunique()
+
+    # 선택 대학이 속한 지역의 대학 수
+    num_region = df_result[df_result["지역"] == school_region]["학교"].nunique()
+
+    # # 선택 대학이 속한 설립구분의 대학 수
+    # num_estab = df_result[df_result["설립구분"] == school_estab]["학교"].nunique()
+
+    # # 선택 대학이 속한 (지역+설립구분) 대학 수
+    # num_region_estab = df_result[
+    #     (df_result["지역"] == school_region) & (df_result["설립구분"] == school_estab)
+    # ]["학교"].nunique()
+
+    # 문구 생성
+    caption = (
+        f"전국 {num_total}개 대학 / "
+        f"{school_region} {num_region}개 대학 / "
+        f"표준집단 (평균=5)"
+    )
+    # -----------------------------
+    # 그래프 하단 오른쪽에 문구 넣기
+    # -----------------------------
+    # (1) 글씨 먼저 추가
+    ax.text(
+        0.9999, -0.15, caption,
+        transform=ax.transAxes,
+        ha="right", va="top",
+        fontsize=15,
+        weight = 'bold',
+        fontproperties=font_prop_labels_for_label,
+        clip_on=False
+
+    )
+
+    # -----------------------------
+    # Streamlit에 출력 (마지막에!)
+    # -----------------------------
     st.pyplot(fig)
+
+
 
 else:
     st.warning("대학명을 정확히 입력해주세요")
