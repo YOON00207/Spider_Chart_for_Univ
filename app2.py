@@ -29,7 +29,7 @@ font_prop_labels_for_box_title = fm.FontProperties(fname=font_path2, size=14, we
 # Streamlit UI
 # -----------------------------
 st.set_page_config(layout="wide")
-st.title("대학 역량 비교 레이더 차트")
+st.title("대학 역량 측면")
 
 school_name = st.selectbox("대학 선택", merge_final["학교"].unique(), index=0)
 
