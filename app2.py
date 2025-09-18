@@ -22,6 +22,7 @@ plt.rcParams['axes.unicode_minus'] = False
 font_prop_labels_for_label = fm.FontProperties(fname=font_path, size=13, weight = 'bold')
 font_prop_labels_for_legend = fm.FontProperties(fname=font_path, size=11, weight = 'bold')
 font_prop_labels_for_box = fm.FontProperties(fname=font_path, size=9, weight = 'bold')
+font_prop_labels_for_box_title = fm.FontProperties(fname=font_path, size=14, weight = 'bold')
 
 # -----------------------------
 # Streamlit UI
@@ -118,7 +119,7 @@ def draw_info_box(ax, x, y, w, h, title, content):
     ax.add_patch(header)
 
     ax.text(x+w/2, y+h-header_h/2, title,
-            ha="center", va="center", color="white", fontproperties=font_prop_labels_for_box, zorder=4,
+            ha="center", va="center", color="white", fontproperties=font_prop_labels_for_box_title, zorder=4,
             transform=ax.transAxes)
     ax.text(x+0.01, y+h-header_h-0.01, content,
             ha="left", va="top", color="black", fontproperties=font_prop_labels_for_box, zorder=4,
