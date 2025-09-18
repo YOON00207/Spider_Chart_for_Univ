@@ -7,7 +7,7 @@ import matplotlib.font_manager as fm
 import pandas as pd
 
 
-merge_final = pd.read_excel(r"C:\Users\윤서현\Desktop\8페이지\0917대학역량측면데이터.xlsx")
+merge_final = pd.read_excel("0917대학역량측면데이터.xlsx")
 
 
 # -----------------------------
