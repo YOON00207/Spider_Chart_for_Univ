@@ -14,6 +14,7 @@ merge_final = pd.read_excel("0917대학역량측면데이터.xlsx")
 # 폰트 설정
 # -----------------------------
 font_path = "KoPubWorld Dotum_Pro Medium.otf"  # 앱과 같은 폴더에 폰트 넣어두기
+font_path2 = "KoPubWorld Dotum Bold.ttf"
 font_name = fm.FontProperties(fname=font_path).get_name()
 plt.rc('font', family=font_name)
 plt.rcParams['axes.unicode_minus'] = False
@@ -22,7 +23,7 @@ plt.rcParams['axes.unicode_minus'] = False
 font_prop_labels_for_label = fm.FontProperties(fname=font_path, size=13, weight = 'bold')
 font_prop_labels_for_legend = fm.FontProperties(fname=font_path, size=11, weight = 'bold')
 font_prop_labels_for_box = fm.FontProperties(fname=font_path, size=9, weight = 'bold')
-font_prop_labels_for_box_title = fm.FontProperties(fname=font_path, size=14, weight = 'bold')
+font_prop_labels_for_box_title = fm.FontProperties(fname=font_path2, size=14, weight = 'bold')
 
 # -----------------------------
 # Streamlit UI
