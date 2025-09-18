@@ -100,7 +100,7 @@ for (x,y), val in zip(school_xy[:-1], school_vals):
             fontsize=12, fontweight="bold", color="#E3342F")
 
 ax.legend(loc="lower left", bbox_to_anchor=(-0.0,0.35),
-          ncol=1, frameon=False, fontproperties=font_prop_labels_for_legend)
+          ncol=1, frameon=False, prop=font_prop_labels_for_legend)
 
 # -----------------------------
 # 네모 설명 박스 (Streamlit 대응)
