@@ -13,7 +13,7 @@ merge_final = pd.read_excel("0917대학역량측면데이터.xlsx")
 # -----------------------------
 # 폰트 설정
 # -----------------------------
-font_path = "KoPubWorld Dotum_Pro Medium.otf"  # 앱과 같은 폴더에 폰트 넣어두기
+font_path = "KoPubWorld Dotum Medium.ttf"  # 앱과 같은 폴더에 폰트 넣어두기
 font_path2 = "KoPubWorld Dotum Bold.ttf"
 font_name = fm.FontProperties(fname=font_path).get_name()
 plt.rc('font', family=font_name)
