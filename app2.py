@@ -18,6 +18,11 @@ font_name = fm.FontProperties(fname=font_path).get_name()
 plt.rc('font', family=font_name)
 plt.rcParams['axes.unicode_minus'] = False
 
+# --- 라벨용 FontProperties (사이즈 포함) ---
+font_prop_labels_for_label = fm.FontProperties(fname=font_path, size=13, weight = 'bold')
+font_prop_labels_for_legend = fm.FontProperties(fname=font_path, size=11, weight = 'bold')
+font_prop_labels_for_box = fm.FontProperties(fname=font_path, size=9, weight = 'bold')
+
 # -----------------------------
 # Streamlit UI
 # -----------------------------
@@ -78,10 +83,10 @@ for r in np.linspace(0.2, 1, 5):
     ax.add_patch(poly)
 
 # 축 라벨
-ax.text(0,1.1,"교육",ha="center",va="bottom",fontsize=13,fontweight="bold")
-ax.text(1.1,0,"연구",ha="left",va="center",fontsize=13,fontweight="bold")
-ax.text(0,-1.1,"창업 및 산학협력",ha="center",va="top",fontsize=13,fontweight="bold")
-ax.text(-1.1,0,"국제화",ha="right",va="center",fontsize=13,fontweight="bold")
+ax.text(0,1.1,"교육",ha="center",va="bottom",fontproperties=font_prop_labels_for_label)
+ax.text(1.1,0,"연구",ha="left",va="center",fontproperties=font_prop_labels_for_label)
+ax.text(0,-1.1,"창업 및 산학협력",ha="center",va="top",fontproperties=font_prop_labels_for_label)
+ax.text(-1.1,0,"국제화",ha="right",va="center",fontproperties=font_prop_labels_for_label)
 
 # -----------------------------
 # 데이터 플롯
@@ -95,7 +100,7 @@ for (x,y), val in zip(school_xy[:-1], school_vals):
             fontsize=12, fontweight="bold", color="#E3342F")
 
 ax.legend(loc="lower left", bbox_to_anchor=(-0.0,0.35),
-          ncol=1, frameon=False, fontsize=11)
+          ncol=1, frameon=False, fontproperties=font_prop_labels_for_legend)
 
 # -----------------------------
 # 네모 설명 박스 (Streamlit 대응)
@@ -116,7 +121,7 @@ def draw_info_box(ax, x, y, w, h, title, content):
             ha="center", va="center", color="white", fontsize=13, weight="bold", zorder=4,
             transform=ax.transAxes)
     ax.text(x+0.01, y+h-header_h-0.01, content,
-            ha="left", va="top", color="black", fontsize=9, zorder=4,
+            ha="left", va="top", color="black", fontproperties=font_prop_labels_for_box, zorder=4,
             transform=ax.transAxes)
 
 # 박스 4개
